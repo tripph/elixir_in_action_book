@@ -10,10 +10,11 @@ defmodule Todo.ServerTest do
   end
 
   test "can add an item to a list" do
-    {:ok, pid} = Todo.Server.start()
+    Todo.Database.start()
+    {:ok, pid} = Todo.Server.start("test")
     item = %Todo.Item{title: "Go Home"}
     :ok = Todo.Server.put(pid, item)
     list = Todo.Server.get_all(pid)
-    assert Map.has_key?(list,1)
+    assert Map.has_key?(list, 1)
   end
 end

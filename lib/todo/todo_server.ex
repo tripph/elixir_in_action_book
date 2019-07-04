@@ -1,17 +1,17 @@
-defmodule TodoListServer do
+defmodule Todo.Server do
   @moduledoc false
 
   use GenServer
 
   def start() do
-    GenServer.start(__MODULE__, nil)
+    GenServer.start(__MODULE__, nil, name: __MODULE__)
   end
 
 
   @impl GenServer
   def init(_opts) do
     cleanup()
-    {:ok, TodoList.new()}
+    {:ok, Todo.List.new()}
   end
 
 
@@ -25,7 +25,7 @@ defmodule TodoListServer do
 
   @impl GenServer
   def handle_call({:put, todo}, _from, state) do
-    newState = TodoList.insert(state, todo)
+    newState = Todo.List.insert(state, todo)
     {:reply, :ok, newState}
   end
 

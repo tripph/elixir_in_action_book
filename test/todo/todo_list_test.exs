@@ -1,8 +1,6 @@
 defmodule Todo.ListTest do
   use ExUnit.Case
 
-  alias Todo.List
-
   @moduletag :capture_log
 
   doctest Todo.List

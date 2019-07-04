@@ -1,8 +1,6 @@
 defmodule Todo.ServerTest do
   use ExUnit.Case
 
-  alias Todo.Server
-
   @moduletag :capture_log
 
   doctest Todo.Server
